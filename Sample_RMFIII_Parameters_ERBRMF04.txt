@@ -1,0 +1,48 @@
+/*********************************************************************/
+/* NAME:        ERBRMF04                                             */
+/*                                                                   */
+/* DESCRIPTION: PARMLIB MEMBER WITH RMF MONITOR III GATHERER OPTIONS */
+/*              (ALL OPTIONS ARE SET TO DEFAULTS)                    */
+/*                                                                   */
+/* NOTES:       1. DO NOT MIX UP THE M III SYNC OPTION WITH THE      */
+/*                 MONITOR I SYNC OPTION: THE M III SYNC VALUE       */
+/*                 SPECIFIES ONLY THE SYNCHRONIZATION OF THE MINTIME */
+/*                 AND HAS NO EFFECT ON THE TIMES, WHEN SMF RECORDS  */
+/*                 ARE WRITTEN BY MONITOR III !!!                    */
+/*                 M III SMF RECORDS ARE ALWAYS SYNCHRONIZED WITH    */
+/*                 MONITOR I SMF RECORDS AND CAN BE CONTROLLED BY    */
+/*                 THE M I SYNC/INTERVAL OPTIONS. IF MONITOR I IS    */
+/*                 NOT ACTIVE, THE INTVAL/SYNCVAL OPTIONS IN         */
+/*                 PARMLIB MEMBER SMFPRMXX DETERMINE, WHEN SMF       */
+/*                 ARE WRITTEN BY MONITOR III.                       */
+/*                                                                   */
+/* COPYRIGHT:   LICENSED MATERIALS - PROPERTY OF IBM                 */
+/*              "RESTRICTED MATERIALS OF IBM"                        */
+/*              (C) COPYRIGHT IBM CORP. 1977, 2003                   */
+/*              STATUS=HRM7708 (z/OS V1R5 RMF)                       */
+/*********************************************************************/
+  CYCLE(2000)                /* SAMPLE EVERY 2 SECONDs (2000 MSEC)   */
+  DATASET(ADD(SLR.RMF.MONIII.DS1))
+  DATASET(ADD(SLR.RMF.MONIII.DS2))
+  DATASET(ADD(SLR.RMF.MONIII.DS3))
+  DATASET(ADD(SLR.RMF.MONIII.DS4))
+  DATASET(ADD(SLR.RMF.MONIII.DS5))
+  DATASET(ADD(SLR.RMF.MONIII.DS6))
+  DATASET(ADD(SLR.RMF.MONIII.DS7))
+  DATASET(ADD(SLR.RMF.MONIII.DS8))
+  DATASET(START)             /* NO DATASET SUPPORT                   */
+  DATASET(NOSWITCH)          /* APPEND TO LAST NON-FULL DATASET      */
+  DATASET(WHOLD(7))          /* CONTROLS BUFFER PAGES IN STORAGE     */
+  MINTIME(60)                /* SET OF SAMPLING(SEC),WRITE TO VSAM   */
+NOOPTIONS                    /* DO NOT DISPLAY OPTIONS               */
+  RESOURCE(*JES2,JES2)       /* SPECIFIES JES STARTED TASK NAME      */
+NOSTOP                       /* RUN UNTIL OPERATOR ISSUES STOP       */
+  SYNC(00)                   /* MINTIME SYNCHRONIZATION              */
+  SYSOUT(A)                  /* MESSAGES TO SYSOUT CLASS A           */
+  WSTOR(32)                  /* SIZE OF INSTORAGE BUFFER (IN MB)     */
+  IOSUB                      /* I/O SUBSYSTEM GATHERING ACTIVE       */
+NOCFDETAIL                   /* NO COUPLING FACILITY DETAILS         */
+  CACHE                      /* ACTIVATE CACHE GATHERING             */
+  VSAMRLS                    /* ACTIVATE VSAM RLS GATHERING          */
+  OPD                        /* ACTIVATE OMVS PROCESS DATA GATHERING */
+

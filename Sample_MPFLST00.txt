@@ -1,0 +1,14 @@
+.NO_ENTRY,SUP(NO),RETAIN(YES),AUTO(NO)
+.DEFAULT,SUP(YES),RETAIN(YES),AUTO(NO)
+/*                                                                  */
+/*      Sample Comments                                             */
+/*                                                                  */
+IEC070I,AUTO(YES),SUP(NO),USEREXIT(XIEC070I)   /*RMF3 VSAM CLOSING  */
+/*                                                                  */
+/*      Sample Comments                                             */
+/*                                                                  */
+.MSGCOLR URGATTN(R,N),IMEDACTN(W,N),EVETACTN(P,N)
+.MSGCOLR GENMSG(B,N),PPMSG(Y,N),SELPEN(B,N)
+.MSGCOLR INSTRERR(W,N),ENTRYARA(W,N),WARNLGEN(G,N)
+.MSGCOLR WARNRGEN(R,N),WARNRURG(R,N),OOLCNTL(T,N)
+.MSGCOLR OOLLABEL(T,N),OOLDATA(G,N)
